@@ -1,17 +1,19 @@
-#ifndef CACHESIMULATOR_H
-#define CACHESIMULATOR_H
+#pragma once
 #include "Cache.h"
+#include <string>
 
 class CacheSimulator {
 
 public:
     struct SimulatorConfig {
-        Cache::Config cacheConfig;
+        std::vector<Cache::Config> cacheConfigs;
     };
 
 private:
-    Cache cache;
+    std::vector<Cache> caches;
+    std::vector<std::string> cacheNames;
     SimulatorConfig simConfig;
+    uint64_t total_memory_accesses = 0;
 
 public:
     explicit CacheSimulator(const SimulatorConfig& config);
@@ -25,5 +27,3 @@ public:
     const Cache& get_cache() const;
     const Cache::Stats& get_stats() const;
 };
-
-#endif

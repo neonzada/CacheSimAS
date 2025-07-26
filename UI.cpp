@@ -67,12 +67,11 @@ int main(int argc, char* argv[])
 
 	// Setup Dear ImGui style
 	ImGui::StyleColorsDark();
-	// ImGui::StyleColorsLight();
 
 	// Setup scaling
 	ImGuiStyle& style = ImGui::GetStyle();
-	style.ScaleAllSizes(main_scale); // Bake a fixed style scale. (until we have a solution for dynamic style scaling, changing this requires resetting Style + calling this again)
-	style.FontScaleDpi = main_scale; // Set initial font scale. (using io.ConfigDpiScaleFonts=true makes this unnecessary. We leave both here for documentation purpose)
+	style.ScaleAllSizes(main_scale);
+	style.FontScaleDpi = main_scale;
 
 	// Setup Platform/Renderer backends
 	ImGui_ImplSDL2_InitForSDLRenderer(window, renderer);
@@ -173,6 +172,4 @@ int main(int argc, char* argv[])
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
-
-	return 0;
 }

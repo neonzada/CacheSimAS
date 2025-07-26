@@ -1,5 +1,4 @@
-#ifndef CACHE_H
-#define CACHE_H
+#pragma once
 #include <cstdint>
 #include <map>
 #include <vector>
@@ -50,7 +49,3 @@ public:
     bool read(uint32_t address);
     const Stats& getStats() const { return stats; }
 };
-
-
-
-#endif

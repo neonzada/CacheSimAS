@@ -1,0 +1,3 @@
+C:/dev/CacheSimAS/build/CMakeFiles/CacheSimAS.dir
+C:/dev/CacheSimAS/build/CMakeFiles/edit_cache.dir
+C:/dev/CacheSimAS/build/CMakeFiles/rebuild_cache.dir

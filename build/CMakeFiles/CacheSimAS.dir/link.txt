@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\CacheSimAS.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\CacheSimAS.dir/objects.a @CMakeFiles\CacheSimAS.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\CacheSimAS.dir/objects.a -Wl,--no-whole-archive -o CacheSimAS.exe -Wl,--out-implib,libCacheSimAS.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\CacheSimAS.dir\linkLibs.rsp
