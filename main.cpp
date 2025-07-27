@@ -8,7 +8,6 @@
 
 int main(int argc, char* argv[]) {
     std::vector<Cache::Config> cacheConfigs{};
-
     // if the first char of last arg is digit, its probably not a file :)
     if(isdigit(argv[argc-1][0])){
         std::cerr << "Invalid or no input file specified. Aborting...";
@@ -39,11 +38,18 @@ int main(int argc, char* argv[]) {
     CacheSimulator cacheSimulator(simConfig);
     #endif
     
-    if(std::optional<std::vector<uint32_t>> addresses = Utils::readBinaryAddresses(inputFile)){        
-        std::cout << "=== Simulate Access... ===";
+    if(std::optional<std::vector<uint32_t>> addresses = Utils::readBinaryAddresses(inputFile)){
+        
+        #ifdef DEBUG_MODE
+        for(uint32_t addr : *addresses){
+            std::cout << addr << std::endl;
+        }
+        #endif
+        
+        std::cout << "=== Simulating Access... ===" << std::endl;
         for (uint32_t address : *addresses) {
             bool hit = cacheSimulator.simulateRead(address);
-            std::cout << (hit ? "Hit" : "Miss") << "\n";
+            std::cout << "[" << address << "]\t" << (hit ? "Hit" : "Miss") << "\n";
         }
         cacheSimulator.printReport();
     }else{

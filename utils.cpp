@@ -16,9 +16,6 @@ std::optional<std::vector<uint32_t>> Utils::readBinaryAddresses(const std::strin
     while (file.read(reinterpret_cast<char*>(&addr), sizeof(addr)))
         outAddresses.push_back(addr);
 
-    for(auto addresses : outAddresses){
-        std::cout << addresses << std::endl;
-    }
     if (file.bad()) {
         std::cerr << "Error during reading file '" << filename << "'" << std::endl;
         return std::nullopt;
