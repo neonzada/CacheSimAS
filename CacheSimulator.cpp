@@ -2,13 +2,13 @@
 #include <iostream>
 
 CacheSimulator::CacheSimulator(const SimulatorConfig& config) : simConfig(config), total_memory_accesses(0) {
-    for(const auto& cfg : config.cacheConfigs){
+    for(const auto& cfg : simConfig.cacheConfigs){
         caches.emplace_back(cfg);
     }
 }
 
 bool CacheSimulator::simulateRead(uint32_t address) {
-    for(auto cache : caches){
+    for(auto& cache : caches){
         if(cache.read(address)){
             return true;
         }
