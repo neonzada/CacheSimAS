@@ -5,6 +5,9 @@
 #include <cstdint>
 #include <random>
 
+//#define MAXADDR 0xFFFFFFFF
+#define MAXADDR 1024
+
 int main(int argc, char* argv[]) {
 	if(argc == 4 && std::string(argv[1]) == "--gen"){
         int count = std::stoi(argv[2]);
@@ -17,7 +20,7 @@ int main(int argc, char* argv[]) {
 
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<uint32_t> distrib(0, 0xFFFFFFFF);
+        std::uniform_int_distribution<uint32_t> distrib(0, MAXADDR);
 
         for(int i = 0; i < count; ++i){
             uint32_t addr = distrib(gen);
