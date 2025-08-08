@@ -1,5 +1,8 @@
 .vscode
+.idea
 build
 Makefile
 *.exe
 *.out
+UI.cpp
+include/UI.h

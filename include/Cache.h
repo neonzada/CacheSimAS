@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <map>
 #include <vector>
+#include <unordered_set>
 
 class Memory;
 
@@ -19,7 +20,9 @@ public:
     struct Stats {
         uint64_t accesses = 0;
         uint64_t hits = 0;
-        uint64_t misses = 0;
+        uint64_t total_misses = 0;
+        uint64_t comp_misses = 0;
+        uint64_t cap_misses = 0;
         uint64_t evictions = 0;
     } stats;
 
@@ -35,6 +38,7 @@ private:
 
 
     std::vector<std::vector<Block>> sets;
+	std::unordered_set<uint64_t> seen_blocks;
     uint64_t global_timestamp = 0;
 
     int getSetIndex(uint32_t address) const;

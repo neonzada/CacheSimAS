@@ -76,7 +76,18 @@ bool Cache::read(uint32_t address) {
         set[block_index].last_used = global_timestamp;
         return true;
     }
-    stats.misses++;
+    stats.total_misses++;
+	
+	// checking for misses: calculates unique id based on <tag, set_index> pair
+	// tag goes in the upper bits of the id
+	// bitwise OR puts the set_index in the lower bits, creating a unique id
+	uint64_t unique_id = ((uint64_t)tag << static_cast<int>(std::log2(num_sets))) | set_index;
+    if (seen_blocks.find(unique_id) == seen_blocks.end()) {
+        stats.comp_misses++;
+        seen_blocks.insert(unique_id);
+    } else {
+        stats.cap_misses++; // TODO: optionally split conflict vs capacity with more logic (pdf)
+    }
 
     int evict_index = chooseBlockToEvict(set_index);
     if (set[evict_index].valid) {

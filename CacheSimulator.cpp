@@ -31,12 +31,14 @@ void CacheSimulator::printReport() const {
     for(size_t i = 0; i < caches.size(); ++i){
         double hitRate = 0.0;
         const auto& stats = caches[i].getStats();
-        std::cout << "Cache L" << (i+1) << ":\n";
-        std::cout << "Total Accesses: " << stats.accesses << "\n";
-        std::cout << "Hits: "           << stats.hits << "\n";
-        std::cout << "Misses: "         << stats.misses << "\n";
-        std::cout << "Evictions: "      << stats.evictions << "\n";
-        std::cout << "Hit Rate: "       << hitRate << "\n";
+        std::cout << "Cache L" << (i+1) 	<< ":\n";
+        std::cout << "Total Accesses: " 	<< stats.accesses << "\n";
+        std::cout << "Hits: "           	<< stats.hits << "\n";
+        std::cout << "Misses: "         	<< stats.total_misses << "\n";
+        std::cout << "Compulsory misses: "	<< stats.comp_misses << "\n";
+        std::cout << "Capacity misses: "	<< stats.cap_misses << "\n";
+        std::cout << "Evictions: "      	<< stats.evictions << "\n";
+        std::cout << "Hit Rate: "       	<< hitRate << "\n";
         std::cout << "====================================\n";
     }
     std::cout << "Total Memory Access (Miss Total): " << total_memory_accesses << "\n";
