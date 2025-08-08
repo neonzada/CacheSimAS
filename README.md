@@ -20,7 +20,7 @@ cmake --build .
 ./CacheSimAS 1024:4:1 input.bin
 ```
 Make sure SDL2 is correctly configured if using the UI.
-If you don't have a hold of a .bin file, don't worry. Simply edit `input.txt` with your hex values of choice, run through `hex2bin` with `./hex2bin input.txt input.bin` and use your newly generated binary input on the simulator!
+If you don't have a hold of a .bin file, don't worry. Simply edit `input.txt` with your hex values of choice, run through `hex2bin` with `./hex2bin input.txt input.bin` and use your newly generated binary input on the simulator! Alternatively, you can generate random addresses with the `--gen` flag, like this: `./hex2bin --gen 1000 input.bin`.
 
 ## 🧪 Example Usage
 
